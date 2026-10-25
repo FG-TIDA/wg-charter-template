@@ -383,16 +383,16 @@ The Working Group will use the common FG-TIDA terminology where applicable.
 <Describe any WG-specific working methods, or delete this section if none.>
 
 
-10. Security, Privacy and Human-Rights Considerations
------------------------------------------------------
+10. Security and Privacy Considerations
+---------------------------------------
 
 ..
    OPTIONAL - RECOMMENDED
 
    AUTHOR GUIDANCE:
 
-   Provide a short paragraph identifying the security, privacy and
-   human-rights concerns that the WG's deliverables must consider.
+   Provide a short paragraph identifying the security and privacy
+   concerns that the WG's deliverables must consider.
 
    Examples may include:
 
@@ -406,7 +406,7 @@ The Working Group will use the common FG-TIDA terminology where applicable.
 
    Avoid generic disclaimers.
 
-<Describe the relevant security, privacy and human-rights considerations.>
+<Describe the relevant security and privacy considerations.>
 
 
 11. Success Criteria and Conclusion

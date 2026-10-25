@@ -183,7 +183,7 @@ These include:
 7. Coordination, Dependencies and Liaisons
 8. Terminology
 9. Working Methods
-10. Security, Privacy and Human-Rights Considerations
+10. Security and Privacy Considerations
 11. Success Criteria and Conclusion
 12. Revision History
 

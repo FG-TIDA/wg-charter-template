@@ -149,9 +149,9 @@ Charter version: <v0.x> — <date> — <status: draft / under review / approved 
 *Guidance — write:* only what differs from the FG-TIDA general working methods, e.g. how the repository and issues are used, how drafts are adopted, interim calls.
 *Do not write:* a repeat of the ITU-T or FG-TIDA rules.
 
-### 10. Security, privacy and human-rights considerations [Optional — recommended]
+### 10. Security and privacy considerations [Optional — recommended]
 
-*Guidance — write:* one short paragraph on the security, privacy and human-rights aspects the group's deliverables must address (for example, the risk of linkability or surveillance when identifying people and agents).
+*Guidance — write:* one short paragraph on the security and privacy aspects the group's deliverables must address (for example, the risk of linkability or surveillance when identifying people and agents).
 *Do not write:* a generic disclaimer.
 
 ### 11. Success criteria and conclusion [Optional]
