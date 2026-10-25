@@ -9,18 +9,12 @@ import shutil
 source_suffix = {'.rst': 'restructuredtext'}
 master_doc = 'index'
 
-# Helper/template files beginning with "_" should not be built as
-# standalone pages.
 exclude_patterns = ['_*.rst', '*/_*.rst']
 
 pygments_style = 'colorful'
 
 # =============================================================================
 # FG-TIDA Working Group Charter metadata
-#
-# When a Working Group creates a repository from this template,
-# update ONLY the values in this section unless there is a specific
-# technical reason to modify the rest of this file.
 # =============================================================================
 
 project = '<WG acronym>'
@@ -33,11 +27,8 @@ numfig = True
 # =============================================================================
 # PDF configuration
 #
-# "howto" is intentionally used instead of "manual".
-#
-# A WG Charter is a short document, not a book/report. Using "howto"
-# prevents top-level sections from being treated as book chapters and
-# reduces unnecessary page breaks.
+# "howto" is used because a WG Charter is a short document rather than a
+# report/book-style publication.
 # =============================================================================
 
 latex_documents = [
@@ -52,13 +43,6 @@ latex_documents = [
 
 # =============================================================================
 # Cover / title metadata
-#
-# Example for an actual Working Group:
-#
-# cover_title = 'WG1: Trust Frameworks'
-# cover_series = 'FG-TIDA Working Group Charter'
-# cover_subject = 'WG-TF'
-# cover_subtitle = 'Charter version 1.0 — Approved'
 # =============================================================================
 
 cover_title = '<Full name of the Working Group>'
@@ -191,7 +175,6 @@ html_context = {
 
 html_last_updated_fmt = '%b %d, %Y'
 
-# Keep support for repositories that contain extra YAML resources.
 html_extra_path = ['yaml']
 
 # =============================================================================
@@ -221,10 +204,6 @@ latex_elements = {
     'pointsize': '10pt',
 
     'figure_align': 'H',
-
-    # -------------------------------------------------------------------------
-    # Custom LaTeX preamble
-    # -------------------------------------------------------------------------
 
     'preamble': u'''
 
@@ -260,10 +239,7 @@ latex_elements = {
 \\definecolor{ituAccent}{HTML}{29ABE2}
 
 % --------------------------------------------------------------------------
-% Compact charter page geometry
-%
-% The charter is intended to be approximately 1–2 pages, so we avoid the
-% large margins normally used for report-style publications.
+% Compact charter geometry
 % --------------------------------------------------------------------------
 
 \\geometry{
@@ -275,8 +251,6 @@ latex_elements = {
 
 % --------------------------------------------------------------------------
 % Compact section spacing
-%
-% This reduces unnecessary vertical whitespace without reducing font size.
 % --------------------------------------------------------------------------
 
 \\titlespacing*{\\section}
@@ -300,8 +274,6 @@ latex_elements = {
 
 \\renewcommand*{\\sphinxstyletheadfamily}
     {\\cellcolor{tableheader}\\sffamily\\color{white}}
-
-% Slightly tighter table spacing for a short charter.
 
 \\renewcommand{\\arraystretch}{0.92}
 
@@ -333,7 +305,7 @@ latex_elements = {
 }
 
 % --------------------------------------------------------------------------
-% Useful helper commands retained for compatibility
+% Compatibility helper commands
 % --------------------------------------------------------------------------
 
 \makeatletter
@@ -358,7 +330,7 @@ latex_elements = {
 }
 
 % --------------------------------------------------------------------------
-% Center the next section if explicitly requested from index.rst
+% Center the next section if explicitly requested
 % --------------------------------------------------------------------------
 
 \newcommand{\tidacenternextsection}{%
@@ -432,17 +404,8 @@ r'''}
 % ==========================================================================
 % Compact FG-TIDA Working Group Charter title block
 %
-% IMPORTANT:
-% A WG Charter is deliberately short.
-%
-% This does NOT use:
-%
-%   \begin{titlepage}
-%   \end{titlepage}
-%   \clearpage
-%   \cleardoublepage
-%
-% Therefore the charter content continues immediately below the title block.
+% No titlepage environment and no forced page break are used.
+% Charter content continues immediately below this block.
 % ==========================================================================
 
 \newcommand{\tidamaketitle}{%
@@ -463,7 +426,7 @@ r'''}
       \textbf{Publications}
     }
 
-    \\[0.10cm]
+    \par\vspace{0.10cm}
 
     {\sffamily\normalsize
       FG-TIDA
@@ -479,7 +442,7 @@ r'''}
       \textbf{International Telecommunication Union}
     }
 
-    \\[0.10cm]
+    \par\vspace{0.10cm}
 
     {\sffamily\small
       Standardization Sector
@@ -487,7 +450,7 @@ r'''}
 
   \end{minipage}
 
-  \vspace{0.25cm}
+  \par\vspace{0.25cm}
 
   % ------------------------------------------------------------------------
   % ITU red separator
@@ -495,7 +458,7 @@ r'''}
 
   {\color{ituRed}\rule{\textwidth}{3pt}}
 
-  \vspace{0.30cm}
+  \par\vspace{0.30cm}
 
   % ------------------------------------------------------------------------
   % Main charter title
@@ -507,31 +470,25 @@ r'''}
       Working Group Charter
     }
 
-    \vspace{0.15cm}
+    \par\vspace{0.15cm}
 
     {\sffamily\LARGE\bfseries
       \coverTitle
     }
 
-    \vspace{0.12cm}
+    \par\vspace{0.12cm}
 
     {\sffamily\normalsize
       \coverSeries
     }
 
-    \vspace{0.05cm}
+    \par\vspace{0.05cm}
 
     {\sffamily\normalsize
       \coverSubject
     }
 
-    \vspace{0.18cm}
-
-    % ----------------------------------------------------------------------
-    % Charter version and status
-    %
-    % Kept close to the title so page 1 is not wasted.
-    % ----------------------------------------------------------------------
+    \par\vspace{0.18cm}
 
     {\sffamily\normalsize\bfseries
       \coverSubtitle
@@ -539,7 +496,7 @@ r'''}
 
   \end{center}
 
-  \vspace{0.15cm}
+  \par\vspace{0.10cm}
 
   % ------------------------------------------------------------------------
   % Small FG-TIDA logo
@@ -551,16 +508,14 @@ r'''}
 
   \end{center}
 
-  \vspace{0.10cm}
+  \par\vspace{0.10cm}
 
   \hrule
 
-  \vspace{0.25cm}
+  \par\vspace{0.25cm}
 
   % ------------------------------------------------------------------------
-  % Reset footnotes only.
-  %
-  % No page break follows this title block.
+  % No page break here.
   % ------------------------------------------------------------------------
 
   \setcounter{footnote}{0}
@@ -571,38 +526,27 @@ r'''}
 
 ''',
 
-    # -------------------------------------------------------------------------
     # Use the compact title block.
-    #
-    # Do NOT append \tidafrontmatter here because that previously introduced
-    # report-style front matter behaviour that is unnecessary for a charter.
-    # -------------------------------------------------------------------------
-
     'maketitle': r'\tidamaketitle',
 
-    # No automatic standalone table of contents.
-    # A 1–2 page WG Charter does not need a dedicated TOC page.
+    # A short charter does not need a dedicated TOC page.
     'tableofcontents': '',
 
-    # No List of Figures / List of Tables pages.
+    # No separate lists of figures/tables.
     'atendofbody': '',
 
-    # Compact single-sided document.
-    'classoptions': ',english,openany,oneside',
+    # Single-sided compact document.
+    'classoptions': ',english,oneside',
 }
 
 # =============================================================================
 # Watermark
 # =============================================================================
 
-# No automatic DRAFT watermark.
-#
-# The status is already explicitly displayed in the charter metadata/title.
-
 latex_elements['preamble'] += '\\SetWatermarkText{}'
 
 # =============================================================================
-# Copy images into the output directory
+# Copy images into output directory
 # =============================================================================
 
 
@@ -611,8 +555,7 @@ def setup(app):
     Copy PDF and PNG images from src/doc/images into the active Sphinx output
     directory.
 
-    This ensures that the same source images remain available for HTML and
-    LaTeX/PDF generation.
+    This keeps the same source images available for HTML and PDF generation.
     """
 
     os.makedirs(app.outdir, exist_ok=True)
