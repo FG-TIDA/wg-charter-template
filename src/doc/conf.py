@@ -1,4 +1,3 @@
-import datetime
 import fnmatch
 import os
 import shutil
@@ -10,8 +9,8 @@ import shutil
 source_suffix = {'.rst': 'restructuredtext'}
 master_doc = 'index'
 
-# Files beginning with "_" are helper/template files and should not be built
-# as standalone pages.
+# Helper/template files beginning with "_" should not be built as
+# standalone pages.
 exclude_patterns = ['_*.rst', '*/_*.rst']
 
 pygments_style = 'colorful'
@@ -19,8 +18,9 @@ pygments_style = 'colorful'
 # =============================================================================
 # FG-TIDA Working Group Charter metadata
 #
-# When a new WG repository is created from this template, authors should
-# update the values in this section.
+# When a Working Group creates a repository from this template,
+# update ONLY the values in this section unless there is a specific
+# technical reason to modify the rest of this file.
 # =============================================================================
 
 project = '<WG acronym>'
@@ -30,15 +30,15 @@ author = 'FG-TIDA'
 
 numfig = True
 
-# ---------------------------------------------------------------------------
-# PDF filename
+# =============================================================================
+# PDF configuration
 #
-# A stable filename is used regardless of the WG name.
+# "howto" is intentionally used instead of "manual".
 #
-#   wg-charter.tex -> wg-charter.pdf
-#
-# This allows the GitHub Actions workflow to always know which file to copy.
-# ---------------------------------------------------------------------------
+# A WG Charter is a short document, not a book/report. Using "howto"
+# prevents top-level sections from being treated as book chapters and
+# reduces unnecessary page breaks.
+# =============================================================================
 
 latex_documents = [
     (
@@ -50,16 +50,16 @@ latex_documents = [
     ),
 ]
 
-# ---------------------------------------------------------------------------
-# Cover metadata
+# =============================================================================
+# Cover / title metadata
 #
-# Example for a real WG:
+# Example for an actual Working Group:
 #
 # cover_title = 'WG1: Trust Frameworks'
 # cover_series = 'FG-TIDA Working Group Charter'
 # cover_subject = 'WG-TF'
 # cover_subtitle = 'Charter version 1.0 — Approved'
-# ---------------------------------------------------------------------------
+# =============================================================================
 
 cover_title = '<Full name of the Working Group>'
 cover_series = 'FG-TIDA Working Group Charter'
@@ -168,7 +168,7 @@ rst_prolog = '''
 '''
 
 # =============================================================================
-# HTML output configuration
+# HTML configuration
 # =============================================================================
 
 html_theme = 'furo'
@@ -191,10 +191,11 @@ html_context = {
 
 html_last_updated_fmt = '%b %d, %Y'
 
+# Keep support for repositories that contain extra YAML resources.
 html_extra_path = ['yaml']
 
 # =============================================================================
-# LaTeX / PDF output configuration
+# LaTeX / PDF syntax highlighting
 # =============================================================================
 
 from sphinx.highlighting import PygmentsBridge
@@ -209,6 +210,9 @@ class CustomLatexFormatter(LatexFormatter):
 
 PygmentsBridge.latex_formatter = CustomLatexFormatter
 
+# =============================================================================
+# LaTeX / PDF configuration
+# =============================================================================
 
 latex_elements = {
 
@@ -217,6 +221,10 @@ latex_elements = {
     'pointsize': '10pt',
 
     'figure_align': 'H',
+
+    # -------------------------------------------------------------------------
+    # Custom LaTeX preamble
+    # -------------------------------------------------------------------------
 
     'preamble': u'''
 
@@ -243,14 +251,71 @@ latex_elements = {
 \\usepackage{tikz}
 \\usetikzlibrary{positioning,calc}
 
+% --------------------------------------------------------------------------
+% FG-TIDA / ITU colours
+% --------------------------------------------------------------------------
+
 \\definecolor{ituBg}{HTML}{2A2D31}
 \\definecolor{ituRed}{HTML}{B91E1E}
 \\definecolor{ituAccent}{HTML}{29ABE2}
 
+% --------------------------------------------------------------------------
+% Compact charter page geometry
+%
+% The charter is intended to be approximately 1–2 pages, so we avoid the
+% large margins normally used for report-style publications.
+% --------------------------------------------------------------------------
+
+\\geometry{
+  top=1.4cm,
+  bottom=1.4cm,
+  left=1.6cm,
+  right=1.6cm
+}
+
+% --------------------------------------------------------------------------
+% Compact section spacing
+%
+% This reduces unnecessary vertical whitespace without reducing font size.
+% --------------------------------------------------------------------------
+
+\\titlespacing*{\\section}
+  {0pt}
+  {0.75em}
+  {0.30em}
+
+\\titlespacing*{\\subsection}
+  {0pt}
+  {0.55em}
+  {0.20em}
+
+\\titlespacing*{\\subsubsection}
+  {0pt}
+  {0.45em}
+  {0.15em}
+
+% --------------------------------------------------------------------------
+% Table formatting
+% --------------------------------------------------------------------------
+
+\\renewcommand*{\\sphinxstyletheadfamily}
+    {\\cellcolor{tableheader}\\sffamily\\color{white}}
+
+% Slightly tighter table spacing for a short charter.
+
+\\renewcommand{\\arraystretch}{0.92}
+
+% --------------------------------------------------------------------------
+% Paragraph spacing
+% --------------------------------------------------------------------------
+
+\\setlength{\\parskip}{0.35em}
+
 ''' + r'''
 
-\renewcommand*{\sphinxstyletheadfamily}
-    {\cellcolor{tableheader}\sffamily\color{white}}
+% --------------------------------------------------------------------------
+% Sphinx document configuration
+% --------------------------------------------------------------------------
 
 \AtBeginDocument{%
 
@@ -259,11 +324,6 @@ latex_elements = {
       \parskip = 0mm
       \tableofcontents
     \endgroup
-    \if@openright
-      \cleardoublepage
-    \else
-      \clearpage
-    \fi
   }%
 
   \title{FG-TIDA Working Group Charter}%
@@ -271,6 +331,10 @@ latex_elements = {
 ''' + r'''
   \release{''' + release + r'''}%
 }
+
+% --------------------------------------------------------------------------
+% Useful helper commands retained for compatibility
+% --------------------------------------------------------------------------
 
 \makeatletter
 
@@ -289,10 +353,13 @@ latex_elements = {
 \newcommand{\tidaskipnextchapter}{%
   \let\tidaorigchapter\chapter
   \def\chapter##1{%
-    \cleardoublepage%
     \let\chapter\tidaorigchapter%
   }%
 }
+
+% --------------------------------------------------------------------------
+% Center the next section if explicitly requested from index.rst
+% --------------------------------------------------------------------------
 
 \newcommand{\tidacenternextsection}{%
   \let\tidaorigsection\section
@@ -300,14 +367,14 @@ latex_elements = {
   \def\section##1{%
 
     \par
-    \addvspace{1.5em}%
+    \addvspace{0.8em}%
 
     \begin{center}
       {\normalfont\Large\bfseries ##1\par}
     \end{center}%
 
     \par
-    \addvspace{0.5em}%
+    \addvspace{0.25em}%
 
     \addcontentsline{toc}{section}{##1}%
 
@@ -315,20 +382,24 @@ latex_elements = {
   }%
 }
 
+% --------------------------------------------------------------------------
+% Center the next subsection if explicitly requested
+% --------------------------------------------------------------------------
+
 \newcommand{\tidacenternextsubsection}{%
   \let\tidaorigsubsection\subsection
 
   \def\subsection##1{%
 
     \par
-    \addvspace{2.5em}%
+    \addvspace{0.7em}%
 
     \begin{center}
       {\normalfont\large\bfseries ##1\par}
     \end{center}%
 
     \par
-    \addvspace{1em}%
+    \addvspace{0.25em}%
 
     \addcontentsline{toc}{subsection}{##1}%
 
@@ -336,25 +407,9 @@ latex_elements = {
   }%
 }
 
-\newcommand{\tidafrontmatter}{%
-
-  \setcounter{secnumdepth}{-1}%
-
-  \pagestyle{plain}%
-
-  \pagenumbering{roman}%
-}
-
-\newcommand{\tidamainmatter}{%
-
-  \setcounter{secnumdepth}{2}%
-
-  \setcounter{chapter}{0}%
-
-  \pagestyle{normal}%
-
-  \pagenumbering{arabic}%
-}
+% --------------------------------------------------------------------------
+% Cover/title metadata
+% --------------------------------------------------------------------------
 
 ''' + r'''
 
@@ -368,170 +423,145 @@ r'''}
 cover_subject.replace('–', '--') +
 r'''}
 
-\newcommand{\coverSubtitle}{''' + cover_subtitle + r'''}
+\newcommand{\coverSubtitle}{''' +
+cover_subtitle.replace('–', '--') +
+r'''}
 
 ''' + r'''
 
-% --------------------------------------------------------------------------
-% FG-TIDA Working Group Charter cover
-% --------------------------------------------------------------------------
+% ==========================================================================
+% Compact FG-TIDA Working Group Charter title block
+%
+% IMPORTANT:
+% A WG Charter is deliberately short.
+%
+% This does NOT use:
+%
+%   \begin{titlepage}
+%   \end{titlepage}
+%   \clearpage
+%   \cleardoublepage
+%
+% Therefore the charter content continues immediately below the title block.
+% ==========================================================================
 
 \newcommand{\tidamaketitle}{%
 
-  \begin{titlepage}
+  \thispagestyle{plain}
 
-    \thispagestyle{empty}
+  % ------------------------------------------------------------------------
+  % ITU / FG-TIDA header
+  % ------------------------------------------------------------------------
 
-    \begin{tikzpicture}[remember picture,overlay]
+  \noindent
+  \begin{minipage}[t]{0.48\textwidth}
 
-      % --------------------------------------------------------------------
-      % Top-left banner
-      % --------------------------------------------------------------------
+    \raggedright
 
-      \node[
-        anchor=north west,
-        inner sep=0pt
-      ]
-      at ([xshift=1.5cm,yshift=-1.3cm]current page.north west)
-      {
-        \sffamily
-        \Large
-        \textcolor{ituAccent}{\textbf{ITU}}
-        \textbf{Publications}
-      };
+    {\sffamily\Large
+      \textcolor{ituAccent}{\textbf{ITU}}
+      \textbf{Publications}
+    }
 
-      \node[
-        anchor=north west,
-        inner sep=0pt
-      ]
-      at ([xshift=1.5cm,yshift=-1.9cm]current page.north west)
-      {
-        \sffamily
-        \normalsize
-        FG-TIDA
-      };
+    \\[0.10cm]
 
-      % --------------------------------------------------------------------
-      % Top-right banner
-      % --------------------------------------------------------------------
+    {\sffamily\normalsize
+      FG-TIDA
+    }
 
-      \node[
-        anchor=north east,
-        inner sep=0pt
-      ]
-      at ([xshift=-1.5cm,yshift=-1.3cm]current page.north east)
-      {
-        \sffamily
-        \normalsize
-        \textbf{International Telecommunication Union}
-      };
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\textwidth}
 
-      \node[
-        anchor=north east,
-        inner sep=0pt
-      ]
-      at ([xshift=-1.5cm,yshift=-1.9cm]current page.north east)
-      {
-        \sffamily
-        \small
-        Standardization Sector
-      };
+    \raggedleft
 
-      % --------------------------------------------------------------------
-      % Red horizontal banner
-      % --------------------------------------------------------------------
+    {\sffamily\normalsize
+      \textbf{International Telecommunication Union}
+    }
 
-      \fill[ituRed]
-        ([yshift=-2.6cm]current page.north west)
-        rectangle
-        ([yshift=-2.95cm]current page.north east);
+    \\[0.10cm]
 
-      % Downward red triangle
+    {\sffamily\small
+      Standardization Sector
+    }
 
-      \fill[ituRed]
-        ([xshift=2cm,yshift=-2.95cm]current page.north west)
-        --
-        ([xshift=2.7cm,yshift=-2.95cm]current page.north west)
-        --
-        ([xshift=2.35cm,yshift=-3.4cm]current page.north west)
-        --
-        cycle;
+  \end{minipage}
 
-      % --------------------------------------------------------------------
-      % Document title
-      % --------------------------------------------------------------------
+  \vspace{0.25cm}
 
-      \node[
-        anchor=north west,
-        inner sep=0pt,
-        text width=18cm
-      ]
-      at ([xshift=1.5cm,yshift=-4.8cm]current page.north west)
-      {
-        \sffamily
-        \hyphenpenalty=10000
-        \exhyphenpenalty=10000
-        \sloppy
+  % ------------------------------------------------------------------------
+  % ITU red separator
+  % ------------------------------------------------------------------------
 
-        {\huge Working Group Charter}\\[0.4cm]
+  {\color{ituRed}\rule{\textwidth}{3pt}}
 
-        {\Huge\bfseries \coverTitle}\\[1.2cm]
+  \vspace{0.30cm}
 
-        {\Large \coverSeries}\\[0.5cm]
+  % ------------------------------------------------------------------------
+  % Main charter title
+  % ------------------------------------------------------------------------
 
-        {\Large \coverSubject}
-      };
+  \begin{center}
 
-      % --------------------------------------------------------------------
-      % Separator
-      % --------------------------------------------------------------------
+    {\sffamily\large\bfseries
+      Working Group Charter
+    }
 
-      \draw[
-        black,
-        line width=0.4pt
-      ]
-      ([xshift=1.5cm,yshift=-12.5cm]current page.north west)
-      --
-      ([xshift=-1.5cm,yshift=-12.5cm]current page.north east);
+    \vspace{0.15cm}
 
-      % --------------------------------------------------------------------
-      % Charter version / status
-      % --------------------------------------------------------------------
+    {\sffamily\LARGE\bfseries
+      \coverTitle
+    }
 
-      \node[
-        anchor=north west,
-        inner sep=0pt,
-        text width=18cm
-      ]
-      at ([xshift=1.5cm,yshift=-13cm]current page.north west)
-      {
-        \sffamily
-        \hyphenpenalty=10000
-        \exhyphenpenalty=10000
-        \sloppy
-        \LARGE
-        \bfseries
-        \coverSubtitle
-      };
+    \vspace{0.12cm}
 
-      % --------------------------------------------------------------------
-      % FG-TIDA logo
-      % --------------------------------------------------------------------
+    {\sffamily\normalsize
+      \coverSeries
+    }
 
-      \node[
-        anchor=south east,
-        inner sep=0pt
-      ]
-      at ([xshift=-1.5cm,yshift=1.5cm]current page.south east)
-      {
-        \includegraphics[width=2.5cm]{tida-logo.png}
-      };
+    \vspace{0.05cm}
 
-    \end{tikzpicture}
+    {\sffamily\normalsize
+      \coverSubject
+    }
 
-  \end{titlepage}
+    \vspace{0.18cm}
 
-  \cleardoublepage
+    % ----------------------------------------------------------------------
+    % Charter version and status
+    %
+    % Kept close to the title so page 1 is not wasted.
+    % ----------------------------------------------------------------------
+
+    {\sffamily\normalsize\bfseries
+      \coverSubtitle
+    }
+
+  \end{center}
+
+  \vspace{0.15cm}
+
+  % ------------------------------------------------------------------------
+  % Small FG-TIDA logo
+  % ------------------------------------------------------------------------
+
+  \begin{center}
+
+    \includegraphics[width=1.25cm]{tida-logo.png}
+
+  \end{center}
+
+  \vspace{0.10cm}
+
+  \hrule
+
+  \vspace{0.25cm}
+
+  % ------------------------------------------------------------------------
+  % Reset footnotes only.
+  %
+  % No page break follows this title block.
+  % ------------------------------------------------------------------------
 
   \setcounter{footnote}{0}
 
@@ -541,23 +571,38 @@ r'''}
 
 ''',
 
-    'maketitle': r'\tidamaketitle\tidafrontmatter',
+    # -------------------------------------------------------------------------
+    # Use the compact title block.
+    #
+    # Do NOT append \tidafrontmatter here because that previously introduced
+    # report-style front matter behaviour that is unnecessary for a charter.
+    # -------------------------------------------------------------------------
 
+    'maketitle': r'\tidamaketitle',
+
+    # No automatic standalone table of contents.
+    # A 1–2 page WG Charter does not need a dedicated TOC page.
     'tableofcontents': '',
 
+    # No List of Figures / List of Tables pages.
     'atendofbody': '',
 
+    # Compact single-sided document.
     'classoptions': ',english,openany,oneside',
 }
 
 # =============================================================================
-# Draft watermark
+# Watermark
 # =============================================================================
+
+# No automatic DRAFT watermark.
+#
+# The status is already explicitly displayed in the charter metadata/title.
 
 latex_elements['preamble'] += '\\SetWatermarkText{}'
 
 # =============================================================================
-# Copy images into the LaTeX build directory
+# Copy images into the output directory
 # =============================================================================
 
 
@@ -566,7 +611,8 @@ def setup(app):
     Copy PDF and PNG images from src/doc/images into the active Sphinx output
     directory.
 
-    This keeps images available for both HTML and LaTeX/PDF builds.
+    This ensures that the same source images remain available for HTML and
+    LaTeX/PDF generation.
     """
 
     os.makedirs(app.outdir, exist_ok=True)
