@@ -46,14 +46,12 @@ latex_documents = [
         'wg-charter.tex',
         project,
         author,
-        'manual',
+        'howto',
     ),
 ]
 
 # ---------------------------------------------------------------------------
 # Cover metadata
-#
-# This is the single source of truth for the HTML/PDF cover information.
 #
 # Example for a real WG:
 #
@@ -82,15 +80,6 @@ extensions = [
 # =============================================================================
 # PlantUML
 # =============================================================================
-
-# GitHub Actions installs PlantUML using apt, therefore "plantuml" is
-# available directly on PATH.
-#
-# For local builds, PLANTUML can point to a local PlantUML JAR, for example:
-#
-# PowerShell:
-#
-# $env:PLANTUML = "java -jar C:/tools/plantuml.jar"
 
 plantuml = os.environ.get('PLANTUML', 'plantuml')
 plantuml_output_format = 'svg'
@@ -144,9 +133,6 @@ rst_prolog = '''
            font-style: italic;
        }
 
-       /*
-        * Allow table content to wrap normally.
-        */
        .wy-table-responsive table td,
        .wy-table-responsive table th {
            white-space: normal !important;
@@ -195,8 +181,6 @@ html_logo = 'images/TIDA_logo.png'
 
 html_show_sourcelink = False
 
-# Keep this generic because repositories created from the template may be
-# created in different years.
 copyright = '<year>, International Telecommunication Union'
 
 html_context = {
@@ -207,14 +191,11 @@ html_context = {
 
 html_last_updated_fmt = '%b %d, %Y'
 
-# Keep the existing YAML path available for repositories that use it.
 html_extra_path = ['yaml']
 
 # =============================================================================
 # LaTeX / PDF output configuration
 # =============================================================================
-
-# Use a smaller font for source-code blocks in PDF output.
 
 from sphinx.highlighting import PygmentsBridge
 from pygments.formatters.latex import LatexFormatter
@@ -231,20 +212,11 @@ PygmentsBridge.latex_formatter = CustomLatexFormatter
 
 latex_elements = {
 
-    # -------------------------------------------------------------------------
-    # Page configuration
-    # -------------------------------------------------------------------------
-
     'papersize': 'a4paper',
 
     'pointsize': '10pt',
 
-    # Keep figures near the position where they are declared.
     'figure_align': 'H',
-
-    # -------------------------------------------------------------------------
-    # Custom LaTeX preamble
-    # -------------------------------------------------------------------------
 
     'preamble': u'''
 
@@ -271,32 +243,17 @@ latex_elements = {
 \\usepackage{tikz}
 \\usetikzlibrary{positioning,calc}
 
-% --------------------------------------------------------------------------
-% FG-TIDA / ITU cover colours
-% --------------------------------------------------------------------------
-
 \\definecolor{ituBg}{HTML}{2A2D31}
 \\definecolor{ituRed}{HTML}{B91E1E}
 \\definecolor{ituAccent}{HTML}{29ABE2}
 
 ''' + r'''
 
-% --------------------------------------------------------------------------
-% Table header formatting
-% --------------------------------------------------------------------------
-
 \renewcommand*{\sphinxstyletheadfamily}
     {\cellcolor{tableheader}\sffamily\color{white}}
 
-% --------------------------------------------------------------------------
-% Front matter / main matter handling
-%
-% The charter can have unnumbered front matter followed by numbered content.
-% --------------------------------------------------------------------------
-
 \AtBeginDocument{%
 
-  % Control where the table of contents is rendered.
   \renewcommand{\sphinxtableofcontents}{%
     \begingroup
       \parskip = 0mm
@@ -309,18 +266,11 @@ latex_elements = {
     \fi
   }%
 
-  % Running PDF header.
-  %
-  % Do NOT label a Working Group Charter as an ITU-T Recommendation.
   \title{FG-TIDA Working Group Charter}%
 
 ''' + r'''
   \release{''' + release + r'''}%
 }
-
-% --------------------------------------------------------------------------
-% Hide the next chapter heading when required.
-% --------------------------------------------------------------------------
 
 \makeatletter
 
@@ -336,10 +286,6 @@ latex_elements = {
 
 \makeatother
 
-% --------------------------------------------------------------------------
-% Skip the next chapter entirely when required.
-% --------------------------------------------------------------------------
-
 \newcommand{\tidaskipnextchapter}{%
   \let\tidaorigchapter\chapter
   \def\chapter##1{%
@@ -347,12 +293,6 @@ latex_elements = {
     \let\chapter\tidaorigchapter%
   }%
 }
-
-% --------------------------------------------------------------------------
-% Center the next section.
-%
-% Useful for front-matter sections while keeping the proper RST hierarchy.
-% --------------------------------------------------------------------------
 
 \newcommand{\tidacenternextsection}{%
   \let\tidaorigsection\section
@@ -375,10 +315,6 @@ latex_elements = {
   }%
 }
 
-% --------------------------------------------------------------------------
-% Center the next subsection.
-% --------------------------------------------------------------------------
-
 \newcommand{\tidacenternextsubsection}{%
   \let\tidaorigsubsection\subsection
 
@@ -400,12 +336,6 @@ latex_elements = {
   }%
 }
 
-% --------------------------------------------------------------------------
-% Front matter
-%
-% Roman page numbering and no section numbering.
-% --------------------------------------------------------------------------
-
 \newcommand{\tidafrontmatter}{%
 
   \setcounter{secnumdepth}{-1}%
@@ -414,12 +344,6 @@ latex_elements = {
 
   \pagenumbering{roman}%
 }
-
-% --------------------------------------------------------------------------
-% Main matter
-%
-% Restore section numbering and Arabic page numbers.
-% --------------------------------------------------------------------------
 
 \newcommand{\tidamainmatter}{%
 
@@ -431,12 +355,6 @@ latex_elements = {
 
   \pagenumbering{arabic}%
 }
-
-% --------------------------------------------------------------------------
-% Cover metadata
-%
-% Values come from the Python variables at the top of conf.py.
-% --------------------------------------------------------------------------
 
 ''' + r'''
 
@@ -464,7 +382,7 @@ r'''}
 
     \thispagestyle{empty}
 
-    \begin{tikzpicture}[remember picture, overlay]
+    \begin{tikzpicture}[remember picture,overlay]
 
       % --------------------------------------------------------------------
       % Top-left banner
@@ -474,10 +392,7 @@ r'''}
         anchor=north west,
         inner sep=0pt
       ]
-      at (
-        [xshift=1.5cm, yshift=-1.3cm]
-        current page.north west
-      )
+      at ([xshift=1.5cm,yshift=-1.3cm]current page.north west)
       {
         \sffamily
         \Large
@@ -489,10 +404,7 @@ r'''}
         anchor=north west,
         inner sep=0pt
       ]
-      at (
-        [xshift=1.5cm, yshift=-1.9cm]
-        current page.north west
-      )
+      at ([xshift=1.5cm,yshift=-1.9cm]current page.north west)
       {
         \sffamily
         \normalsize
@@ -507,10 +419,7 @@ r'''}
         anchor=north east,
         inner sep=0pt
       ]
-      at (
-        [xshift=-1.5cm, yshift=-1.3cm]
-        current page.north east
-      )
+      at ([xshift=-1.5cm,yshift=-1.3cm]current page.north east)
       {
         \sffamily
         \normalsize
@@ -521,10 +430,7 @@ r'''}
         anchor=north east,
         inner sep=0pt
       ]
-      at (
-        [xshift=-1.5cm, yshift=-1.9cm]
-        current page.north east
-      )
+      at ([xshift=-1.5cm,yshift=-1.9cm]current page.north east)
       {
         \sffamily
         \small
@@ -532,7 +438,7 @@ r'''}
       };
 
       % --------------------------------------------------------------------
-      % ITU red horizontal banner
+      % Red horizontal banner
       % --------------------------------------------------------------------
 
       \fill[ituRed]
@@ -543,11 +449,11 @@ r'''}
       % Downward red triangle
 
       \fill[ituRed]
-        ([xshift=2cm, yshift=-2.95cm]current page.north west)
+        ([xshift=2cm,yshift=-2.95cm]current page.north west)
         --
-        ([xshift=2.7cm, yshift=-2.95cm]current page.north west)
+        ([xshift=2.7cm,yshift=-2.95cm]current page.north west)
         --
-        ([xshift=2.35cm, yshift=-3.4cm]current page.north west)
+        ([xshift=2.35cm,yshift=-3.4cm]current page.north west)
         --
         cycle;
 
@@ -560,10 +466,7 @@ r'''}
         inner sep=0pt,
         text width=18cm
       ]
-      at (
-        [xshift=1.5cm, yshift=-4.8cm]
-        current page.north west
-      )
+      at ([xshift=1.5cm,yshift=-4.8cm]current page.north west)
       {
         \sffamily
         \hyphenpenalty=10000
@@ -587,15 +490,9 @@ r'''}
         black,
         line width=0.4pt
       ]
-      (
-        [xshift=1.5cm, yshift=-12.5cm]
-        current page.north west
-      )
+      ([xshift=1.5cm,yshift=-12.5cm]current page.north west)
       --
-      (
-        [xshift=-1.5cm, yshift=-12.5cm]
-        current page.north east
-      );
+      ([xshift=-1.5cm,yshift=-12.5cm]current page.north east);
 
       % --------------------------------------------------------------------
       % Charter version / status
@@ -606,10 +503,7 @@ r'''}
         inner sep=0pt,
         text width=18cm
       ]
-      at (
-        [xshift=1.5cm, yshift=-13cm]
-        current page.north west
-      )
+      at ([xshift=1.5cm,yshift=-13cm]current page.north west)
       {
         \sffamily
         \hyphenpenalty=10000
@@ -628,10 +522,7 @@ r'''}
         anchor=south east,
         inner sep=0pt
       ]
-      at (
-        [xshift=-1.5cm, yshift=1.5cm]
-        current page.south east
-      )
+      at ([xshift=-1.5cm,yshift=1.5cm]current page.south east)
       {
         \includegraphics[width=2.5cm]{tida-logo.png}
       };
@@ -650,17 +541,10 @@ r'''}
 
 ''',
 
-    # -------------------------------------------------------------------------
-    # Replace Sphinx's normal title page with our FG-TIDA charter cover.
-    # -------------------------------------------------------------------------
-
     'maketitle': r'\tidamaketitle\tidafrontmatter',
 
-    # The TOC can be emitted manually from index.rst if desired.
     'tableofcontents': '',
 
-    # Charters are short documents. We intentionally do not force separate
-    # "List of Tables" or "List of Figures" pages.
     'atendofbody': '',
 
     'classoptions': ',english,openany,oneside',
@@ -670,9 +554,6 @@ r'''}
 # Draft watermark
 # =============================================================================
 
-# No automatic DRAFT watermark.
-#
-# The actual charter status is displayed explicitly on the document and cover.
 latex_elements['preamble'] += '\\SetWatermarkText{}'
 
 # =============================================================================
