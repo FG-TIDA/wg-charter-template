@@ -46,7 +46,7 @@ latex_documents = [
         'wg-charter.tex',
         project,
         author,
-        'manual',
+        'howto',
     ),
 ]
 
