@@ -60,7 +60,6 @@ This starts a local server at <http://127.0.0.1:8000>, sets up PlantUML for you,
 ## 4. Edit the content
 
 - **Text, tables, diagrams, cross-references** — see the built charters; they demonstrate every feature and the source shows the markup.
-- **Add an API reference** — put your OpenAPI (Swagger 3.0) file in `src/doc/yaml/`, copy `src/doc/charters/04_charter4/_interface1.rst` as a pattern (repoint its `../../yaml/…` paths at your file), and include the new page from `04_charter4/index.rst`.
 - **Add an image** — put it in `src/doc/images/` and reference it with a relative path (see charter 2). Use a single PNG so it works in both HTML and PDF.
 
 ### Splitting a charter across files (`include`)
