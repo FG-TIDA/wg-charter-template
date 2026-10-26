@@ -73,10 +73,6 @@ All of your content lives in `src/doc/index.rst`. Edit it directly:
 - **Text, tables, lists, admonitions** — the file itself is the best reference for the markup. For example, the Charter Information and section tables are reStructuredText `list-table` directives you can copy and adapt.
 - **Add an image** — put it in `src/doc/images/` and reference it with a relative path. Use a single PNG so it works in both HTML and PDF.
 
-### Changing the look
-
-The template uses the [Furo](https://github.com/pradyunsg/furo) theme with a custom styling layer. To rebrand, edit the CSS variables at the top of `src/doc/_static/osia-furo.css` (colours, fonts). **Do not change `html_theme` in `conf.py` or remove the custom CSS/JS/templates** — the layout is built on Furo and will break without it.
-
 ## 5. Publish
 
 Pushing to the `main` branch automatically builds the HTML site and PDF and deploys them to GitHub Pages, via the workflow in `.github/workflows/docs.yml`.
