@@ -8,21 +8,6 @@
 FG-TIDA WG<n>: <Full name of the Working Group> (<ACRONYM>)
 =============================================================
 
-.. only:: html
-
-   .. admonition:: Author Guidance
-      :class: tip
-
-      This document is an FG-TIDA Working Group Charter template.
-
-      Replace all text enclosed in ``<...>``.
-
-      Guidance contained in source comments is intended for charter authors
-      and does not appear in the published HTML or PDF.
-
-      Keep the final charter short: approximately 600–1,200 words.
-
-
 Charter Information
 -------------------
 
