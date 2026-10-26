@@ -205,26 +205,8 @@ Out of Scope / Non-Goals
    Every deliverable should have:
 
    - a clear title;
-   - an output type;
    - a short description;
    - relevant input documents, where applicable.
-
-   Suggested FG-TIDA output types:
-
-   [UC]
-      Use-case document.
-
-   [TR]
-      Technical report.
-
-   [TS]
-      Technical specification.
-
-   [GL]
-      Guideline.
-
-   [IN]
-      Input to ITU-T SG17.
 
    Existing contributions or draft documents should be identified as inputs,
    not automatically treated as adopted WG text.
@@ -233,23 +215,20 @@ Out of Scope / Non-Goals
 
 .. list-table::
    :header-rows: 1
-   :widths: 6 24 15 35 20
+   :widths: 6 29 45 20
 
    * - #
      - Deliverable
-     - Output type
      - Short description
      - Input documents
 
    * - 1
      - <Deliverable 1>
-     - <[UC] / [TR] / [TS] / [GL] / [IN]>
      - <Description>
      - <Input, if any>
 
    * - 2
      - <Deliverable 2>
-     - <Output type>
      - <Description>
      - <Input, if any>
 

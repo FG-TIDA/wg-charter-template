@@ -55,7 +55,7 @@ These approved IETF charters were reviewed on the IETF Datatracker to derive the
 
 | Charter | Why it is a useful model |
 |---|---|
-| [WIMSE](https://datatracker.ietf.org/doc/charter-ietf-wimse/) (workload identity) | Clear list of what it will **not** define; each deliverable tagged with its intended output type ([PS], [I], [BCP]); explicit liaisons (CNCF/SPIFFE, OpenID Foundation). |
+| [WIMSE](https://datatracker.ietf.org/doc/charter-ietf-wimse/) (workload identity) | Clear list of what it will **not** define; explicit liaisons (CNCF/SPIFFE, OpenID Foundation). |
 | [RATS](https://datatracker.ietf.org/doc/charter-ietf-rats/) (remote attestation) | Short introduction defining the roles; goals stated with explicit out-of-scope sentence; numbered programme of work. |
 | [SCITT](https://datatracker.ietf.org/doc/charter-ietf-scitt/) (supply-chain transparency) | Numbered problem statement; separate **Non-Goals** section; programme of work grouped by work area. |
 | [OAuth](https://datatracker.ietf.org/doc/charter-ietf-oauth/) (delegation, incl. automated agents) | Compact "Work Program" and "Coordination" sections; shows how to frame agentic delegation in a charter. |
@@ -67,7 +67,6 @@ The general rule for charter content comes from [RFC 2418 (BCP 25), section 2.2]
 | IETF element | FG-TIDA equivalent |
 |---|---|
 | Responsible Area Director | FG-TIDA co-chairs (and, through them, the parent Study Group, ITU-T SG17) |
-| [PS] / [I] / [BCP] tags on deliverables | Output type of the Focus Group deliverable, e.g. [TR] technical report, [TS] technical specification, [UC] use-case document, [GL] guideline, [IN] input to SG17 |
 | Internet-Draft adopted by the WG | Draft deliverable in the FG-TIDA repository (GitHub) |
 | Milestones on the Datatracker | Milestones aligned with the FG-TIDA meeting calendar and its terms of reference |
 | IESG charter approval | Approval by the FG-TIDA plenary, within the terms of reference agreed by SG17 |
@@ -116,11 +115,11 @@ Charter version: <v0.x> — <date> — <status: draft / under review / approved 
 
 ### 5. Programme of work and deliverables [Mandatory]
 
-| # | Deliverable | Output type | Short description | Input documents (if any) |
-|---|---|---|---|---|
-| 1 | | [UC] / [TR] / [TS] / [GL] / [IN] | | |
+| # | Deliverable | Short description | Input documents (if any) |
+|---|---|---|---|
+| 1 | | | |
 
-*Guidance — write:* a numbered list of concrete documents, each with its output type (the FG-TIDA equivalent of the IETF [PS]/[I]/[BCP] tags) and one to three sentences on what it contains. If a candidate draft already exists, name it as an input (as WIMSE names its use-case draft) — an input, not an adopted text.
+*Guidance — write:* a numbered list of concrete documents, each with one to three sentences on what it contains. If a candidate draft already exists, name it as an input (as WIMSE names its use-case draft) — an input, not an adopted text.
 *Do not write:* deliverables with no clear end ("ongoing analysis"); more deliverables than the group has editors for; or text that commits the group to adopt a specific contribution.
 
 ### 6. Milestones [Mandatory]
@@ -170,7 +169,7 @@ Charter version: <v0.x> — <date> — <status: draft / under review / approved 
 ## Quick checklist before submitting a charter
 
 - Is it no longer than about two pages?
-- Does every deliverable have an output type and at least one milestone?
+- Does every deliverable have at least one milestone?
 - Is there an explicit list of non-goals?
 - Are overlaps with the other FG-TIDA working groups and with SG17 Questions named?
 - Are people's names only in section 1?

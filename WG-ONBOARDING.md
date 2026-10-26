@@ -303,19 +303,8 @@ Where another group owns a neighbouring topic, identify that group explicitly.
 Each deliverable should have:
 
 - a clear title;
-- an output type;
 - a short description;
 - relevant input documents, where applicable.
-
-The template uses FG-TIDA output-type identifiers such as:
-
-| Identifier | Meaning |
-|---|---|
-| `[UC]` | Use-case document |
-| `[TR]` | Technical report |
-| `[TS]` | Technical specification |
-| `[GL]` | Guideline |
-| `[IN]` | Input to ITU-T SG17 |
 
 A contribution or existing draft may be identified as an input to the work.
 
@@ -561,7 +550,6 @@ Check the following before requesting approval:
 - [ ] Is the charter approximately 600–1,200 words?
 - [ ] Is every mandatory section complete?
 - [ ] Have optional sections with no useful content been removed?
-- [ ] Does every deliverable have a defined output type?
 - [ ] Does every deliverable have at least one milestone?
 - [ ] Is there an explicit list of non-goals?
 - [ ] Are overlaps with other FG-TIDA WGs identified?
