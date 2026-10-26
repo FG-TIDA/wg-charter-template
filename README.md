@@ -43,7 +43,7 @@ This template is for the charters of the FG-TIDA working groups. It is modelled 
 
 ## How to use this template
 
-- Keep the charter short: one to two pages, about 600–1,200 words. Like the IETF, the charter is a contract on scope and deliverables, not a tutorial or a position paper.
+- Keep the charter short: two to three pages(excluding the cover page), about 800–2,000 words. Like the IETF, the charter is a contract on scope and deliverables, not a tutorial or a position paper.
 - Every section marked **[Mandatory]** must be present, even if it is short. Sections marked **[Optional]** are added only when they carry real content.
 - Delete all the *guidance* text in italics before circulating a charter.
 - Write in the future tense and in the third person ("The working group will develop …"). Avoid "we", marketing language, product names and company names in the body.
