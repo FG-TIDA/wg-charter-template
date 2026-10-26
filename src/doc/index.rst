@@ -348,7 +348,8 @@ Out of Scope / Non-Goals
 
    Do not create a complete glossary here.
 
-The Working Group will use the common FG-TIDA terminology where applicable.
+The Working Group will use the common FG-TIDA terminology where applicable. 
+Should the Working Group define new terminology, this shall be communicated to the FG-TIDA terminology & use cases WG that maintains the common terminology repository. 
 
 .. list-table::
    :header-rows: 1
@@ -360,8 +361,26 @@ The Working Group will use the common FG-TIDA terminology where applicable.
    * - <Term>
      - <Definition>
 
+9. Use Cases
+--------------
 
-9. Working Methods
+..
+   OPTIONAL
+
+   AUTHOR GUIDANCE:
+
+   Include this section only where WG-specific use cases is needed.
+
+   Prefer a reference to FG-TIDA use cases work.
+
+   Limit this section to approximately three use cases.
+
+   Do not create a complete set of use cases here.
+
+The Working Group will define use cases relevant to this problem domain. 
+This shall be communicated to the FG-TIDA terminology & use cases WG that maintains the common use cases repository. 
+
+10. Working Methods
 ------------------
 
 ..
@@ -383,7 +402,7 @@ The Working Group will use the common FG-TIDA terminology where applicable.
 <Describe any WG-specific working methods, or delete this section if none.>
 
 
-10. Security and Privacy Considerations
+11. Security and Privacy Considerations
 ---------------------------------------
 
 ..
@@ -409,7 +428,7 @@ The Working Group will use the common FG-TIDA terminology where applicable.
 <Describe the relevant security and privacy considerations.>
 
 
-11. Success Criteria and Conclusion
+12. Success Criteria and Conclusion
 -----------------------------------
 
 ..
@@ -433,7 +452,7 @@ The Working Group will have completed its chartered work when
 Following completion, <describe the expected next step, if applicable>.
 
 
-12. Revision History
+13. Revision History
 --------------------
 
 ..
