@@ -1,33 +1,41 @@
 # How to use this template
 
-This guide explains how to start a document from this template, build it locally, edit its content, and publish it.
+This guide explains how to start a charter from this template, build it locally, edit its content, and publish it.
 
-## 1. Start your document
+Throughout, **"charter"** means the whole document you are producing. The charter is organised into numbered **sections** (Group Information, Background, Goals, and so on) — all held in a single source file.
+
+## 1. Start your charter
 
 Create your own copy of the template:
 
 - On GitHub, click **Use this template → Create a new repository**, or
 - clone this repository and push it to a repository of your own.
 
-Then work through the content:
+The charter is a single source file:
 
-- `src/doc/index.rst` — the **landing page** and front matter (title, abstract, authors, foreword). Replace the `<placeholders>`.
-- `src/doc/charters/` — the **charters**, in reading order (`01_charter1.rst` … `07_references.rst`). Replace the *lorem ipsum* with your own content.
+- `src/doc/index.rst` — the **charter itself**: the title, the front matter (version, date, status), and all its numbered sections. Replace the text in `<...>` with your own content.
 
-The charters are written to teach the system as you read them: charter 1 covers text, lists, links and admonitions; charter 2 covers figures, tables and diagrams; charter 3 covers organising a large document; charter 4 covers API references.
+Author guidance is built into that file so you know what each section needs:
+
+- an **Author Guidance** note that appears only in the HTML preview, and
+- **source comments** (blocks beginning with `..`) above each section, which explain what to write and never appear in the published HTML or PDF.
+
+Keep the finished charter short — approximately 600–1,200 words.
 
 ## 2. Set up a local build environment
 
 You need this only to preview locally — the online build (step 5) needs no setup. To build on your own machine:
 
 1. **Install Python 3.10+** (3.12 recommended).
-2. **Install the Python dependencies:**
+2. **Create a virtual environment and install the dependencies.** The live-preview script (`preview.ps1`) expects a `.venv` in the repository root, so create it there. In PowerShell:
 
-   ```shell
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
    pip install -r requirements.txt
    ```
 
-3. **For diagrams — install Java and PlantUML** (optional; skip if your document has no `.. uml::` diagrams):
+3. **For diagrams — install Java and PlantUML** (optional; skip if your charter has no `.. uml::` diagrams):
 
    - Install Java 17 or newer.
    - Download `plantuml.jar` from <https://plantuml.com/download> and place it in the repository root.
@@ -55,19 +63,15 @@ Open `target/html/index.html` in a browser.
 ./preview.ps1
 ```
 
-This starts a local server at <http://127.0.0.1:8000>, sets up PlantUML for you, and forces full rebuilds (needed because edits to *included* files do not always refresh the page that includes them).
+This starts a local server at <http://127.0.0.1:8000>, sets up PlantUML for you, and forces a full rebuild on every save so your changes always appear.
 
 ## 4. Edit the content
 
-- **Text, tables, diagrams, cross-references** — see the built charters; they demonstrate every feature and the source shows the markup.
-- **Add an image** — put it in `src/doc/images/` and reference it with a relative path (see charter 2). Use a single PNG so it works in both HTML and PDF.
+All of your content lives in `src/doc/index.rst`. Edit it directly:
 
-### Splitting a charter across files (`include`)
-
-A charter can be assembled from several source files with `.. include::`, so its content stays in one page while the source is broken into manageable pieces (see `charters/03_charter3.rst`, and the annex and appendix). Two rules keep this working:
-
-- **Name included fragments with a leading underscore** (for example `_annex1.rst`). The build skips underscore-prefixed files as standalone pages, so their labels and headings are not processed twice.
-- **Demote the headings inside an included fragment by one level.** The container page's title uses `===` (charter level), so a heading inside an included fragment must use `---` (section level) to nest *under* the charter. If you leave it at `===`, it becomes its own numbered charter in the menu instead of a section of the current one.
+- **Replace the placeholders.** Every `<...>` is a prompt for text you supply. Follow the per-section author guidance in the source comments, and delete sections marked *optional* if they do not apply.
+- **Text, tables, lists, admonitions** — the file itself is the best reference for the markup. For example, the Charter Information and section tables are reStructuredText `list-table` directives you can copy and adapt.
+- **Add an image** — put it in `src/doc/images/` and reference it with a relative path. Use a single PNG so it works in both HTML and PDF.
 
 ### Changing the look
 
