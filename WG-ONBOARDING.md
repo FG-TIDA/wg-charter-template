@@ -24,8 +24,8 @@ The charter is a scope and delivery agreement. It is not intended to be a tutori
 
 A final charter should normally remain concise:
 
-- approximately **800–2,000 words**;
-- generally *two to 3 pages**, excluding cover page and administrative tables where appropriate.
+- approximately **600–1,200 words**;
+- generally **two to three pages**, excluding the cover page and administrative tables where appropriate.
 
 ---
 
