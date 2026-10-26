@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const currentItems = document.querySelectorAll("li.current");
   if (!currentItems.length) {
-    localToc.remove();
+    // Single-page charter: Furo builds no navigation tree (there is no
+    // toctree), so there is no current page entry to nest the section list
+    // under. Leave the local TOC where the template placed it in the sidebar
+    // instead of removing it, so the section links still show.
     return;
   }
 
