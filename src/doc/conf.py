@@ -181,7 +181,7 @@ html_logo = 'images/TIDA_logo.png'
 
 html_show_sourcelink = False
 
-copyright = '<year>, International Telecommunication Union'
+copyright = f'{datetime.datetime.now().year}, FG-TIDA'
 
 html_context = {
     'project': project,
