@@ -47,12 +47,13 @@ management team, but should remain short, predictable, and clearly tied to the
 Working Group.
 
 Within its own organization, each Working Group keeps **one repository per
-deliverable**:
+deliverable**, named `wg<n>-<acronym>-<name>`, where `<n>` is the Working Group
+number and `<acronym>` is the Working Group's acronym:
 
-- exactly **one charter** repository, created from `wg-charter-template` — for
-  example `wg1-charter`;
-- **one repository per specification**, created from `spec-template` — for
-  example `wg1-ra-aai`, `wg1-<second-spec>`.
+- exactly **one charter** repository, created from `wg-charter-template`, named
+  `wg<n>-<acronym>-charter` — for example `wg1-ra-charter`;
+- **one repository per specification**, created from `spec-template`, named
+  `wg<n>-<acronym>-<spec-name>` — for example `wg1-ra-aai`, `wg1-ra-<second-spec>`.
 
 Keeping each deliverable in its own repository lets each one be versioned,
 reviewed, built, and published independently.
@@ -94,9 +95,9 @@ Your Working Group's own organization, for example `fg-tida-wg1` — **not** the
 
 **Repository name**
 
-Use the agreed Working Group naming convention — for the charter, for example:
+Follow the naming convention `wg<n>-<acronym>-charter` for the charter — for example:
 
-`wg1-charter`
+`wg1-ra-charter`
 
 Set the repository visibility according to FG-TIDA policy.
 
@@ -146,7 +147,7 @@ wg-charter.pdf
 For example:
 
 ```text
-https://fg-tida-wg1.github.io/wg1-charter/wg-charter.pdf
+https://fg-tida-wg1.github.io/wg1-ra-charter/wg-charter.pdf
 ```
 
 ---
