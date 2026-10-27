@@ -447,6 +447,13 @@ button.copybtn:hover {
   margin-top: 0;
 }
 
+/* Sidebar lists only the top-level charter sections. Hide deeper subsections
+   (e.g. "In Scope" / "Out of Scope / Non-Goals") — they remain in the document
+   body, just not in the menu. */
+.osia-sidebar-localtoc-tree ul ul {
+  display: none;
+}
+
 .osia-sidebar-localtoc-tree li {
   margin: 0.08rem 0;
 }
