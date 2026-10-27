@@ -20,8 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!currentItems.length) {
     // Single-page charter: Furo builds no navigation tree (there is no
     // toctree), so there is no current page entry to nest the section list
-    // under. Leave the local TOC where the template placed it in the sidebar
-    // instead of removing it, so the section links still show.
+    // under. Move it into Furo's scrollable sidebar area (.sidebar-scroll) so
+    // the section links (a) still show and (b) can scroll when the list is
+    // taller than the viewport. Fall back to leaving it in place if that
+    // container is not present.
+    const scroll = document.querySelector(".sidebar-scroll");
+    if (scroll) {
+      scroll.appendChild(localToc);
+    }
     return;
   }
 
