@@ -7,10 +7,10 @@ See it live:
 
 ## Quick start
 
-1. Click **Use this template → Create a new repository**, and name it for your working group.
+1. In your Working Group's GitHub organization (`fg-tida-wg<n>`), click **Use this template → Create a new repository** and name it `wg<n>-<acronym>-charter`.
 2. In the new repo, enable publishing: **Settings → Pages → Source: GitHub Actions**.
 3. Write your charter in [src/doc/index.rst](src/doc/index.rst) — replace every `<placeholder>` with your content and follow the author guidance built into the file.
-4. Push to `main`. The web page and PDF publish automatically to `https://fg-tida.github.io/<repo-name>/`.
+4. Push to `main`. The web page and PDF publish automatically to `https://fg-tida-wg<n>.github.io/wg<n>-<acronym>-charter/`.
 
 > **Tip:** Once your repo is created, replace this README with a short description of *your* working group — what it covers, its status, and a link to its published page.
 
