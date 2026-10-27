@@ -5,8 +5,6 @@ A template for writing an **FG-TIDA Working Group charter** and publishing it as
 See it live:
 📄 [Web page](https://fg-tida.github.io/wg-charter-template/) · 📑 [PDF](https://fg-tida.github.io/wg-charter-template/wg-charter.pdf)
 
-The live pages are built by this repository and double as a worked example of a charter.
-
 ## Quick start
 
 1. Click **Use this template → Create a new repository**, and name it for your working group.
