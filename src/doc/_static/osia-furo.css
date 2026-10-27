@@ -429,9 +429,10 @@ button.copybtn:hover {
 
 .osia-sidebar-localtoc {
   margin-top: 0;
-  margin-left: 0.75rem;
+  margin-left: 0;
   padding-top: 0;
-  border-left: 2px solid var(--osia-primary-soft);
+  /* No left bar or indentation: on the single-page charter this section list
+     is the main menu, so every item reads as a top-level item. */
 }
 
 .osia-sidebar-localtoc-tree {
@@ -441,7 +442,7 @@ button.copybtn:hover {
 
 .osia-sidebar-localtoc-tree ul {
   list-style: none;
-  padding-left: 0.45rem;
+  padding-left: 0.2rem;
   margin-left: 0;
   margin-top: 0;
 }
