@@ -536,7 +536,7 @@ This requires no local installation.
 For contributors who want to build the document locally, see:
 
 ```text
-HOWTO.md
+CONTRIBUTING.md
 ```
 
 The local build can be used to preview HTML and PDF output before creating a Pull Request.
@@ -575,4 +575,4 @@ For problems with the common template, PDF generation, Sphinx configuration or G
 
 For local build instructions and technical authoring details, see:
 
-`HOWTO.md`
+`CONTRIBUTING.md`

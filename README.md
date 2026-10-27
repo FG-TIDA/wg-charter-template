@@ -17,10 +17,10 @@ See it live:
 ## Documentation
 
 - **[WG-ONBOARDING.md](WG-ONBOARDING.md)** — step-by-step guide to writing the charter, section by section.
-- **[HOWTO.md](HOWTO.md)** — how to build, preview, and publish the document locally.
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** — how to contribute, and how to build, preview, and publish the document locally.
 
 ## What's in this repository
 
 - [src/doc/index.rst](src/doc/index.rst) — the charter itself (the content you edit).
-- [HOWTO.md](HOWTO.md) — local build, preview, and publishing.
+- [CONTRIBUTING.md](CONTRIBUTING.md) — how to contribute, build, preview, and publish.
 - [WG-ONBOARDING.md](WG-ONBOARDING.md) — the author's guide.
