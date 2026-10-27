@@ -29,44 +29,50 @@ A final charter should normally remain concise:
 
 ---
 
-## 2. FG-TIDA Charter Repository Model
+## 2. FG-TIDA Repository Model
 
-The GitHub organization is:
+FG-TIDA uses **one GitHub organization per Working Group**, plus a central
+organization that holds the shared templates.
 
-`FG-TIDA`
+**Central organization — `FG-TIDA`.** Managed by the FG-TIDA management team, it
+holds the templates that every Working Group copies:
 
-The Working Group Charter template repository is:
+- `FG-TIDA/wg-charter-template` — the charter template (this repository);
+- `FG-TIDA/spec-template` — the specification template.
 
-`FG-TIDA/wg-charter-template`
+**One organization per Working Group**, for example `fg-tida-wg1`. Its **owners
+(admins)** are the Working Group chairs together with an FG-TIDA management
+representative. Organization and repository names may be adjusted by the FG-TIDA
+management team, but should remain short, predictable, and clearly tied to the
+Working Group.
 
-Each Working Group should normally maintain one charter repository created from this template.
+Within its own organization, each Working Group keeps **one repository per
+deliverable**:
 
-For example:
+- exactly **one charter** repository, created from `wg-charter-template` — for
+  example `wg1-charter`;
+- **one repository per specification**, created from `spec-template` — for
+  example `wg1-ra-aai`, `wg1-<second-spec>`.
 
-```text
-wg1-charter
-wg2-charter
-wg-agent-identity-charter
-wg-trust-framework-charter
-```
+Keeping each deliverable in its own repository lets each one be versioned,
+reviewed, built, and published independently.
 
-The exact repository naming convention may be adjusted by the FG-TIDA management team, but names should remain short, predictable and clearly associated with the relevant Working Group.
+Each repository provides:
 
-Each charter repository provides:
-
-- the editable charter source;
+- the editable source;
 - version history through Git;
 - Pull Request review;
-- an automatically generated HTML publication;
+- an automatically generated HTML publication, at
+  `https://fg-tida-wg<n>.github.io/<repository-name>/`;
 - an automatically generated PDF;
-- an issue tracker for charter-related discussion;
+- an issue tracker for discussion;
 - synchronization to the corresponding FG-TIDA GitLab repository where configured.
 
 ---
 
 ## 3. Create a New Working Group Charter
 
-A new Working Group should create its charter repository from the official template.
+A new Working Group creates its **charter** repository from the charter template, inside the Working Group's own GitHub organization (created beforehand by the FG-TIDA management team — see section 2). Each specification is created the same way from `FG-TIDA/spec-template`.
 
 ### Step 1 — Open the template
 
@@ -84,17 +90,13 @@ Set:
 
 **Owner**
 
-`FG-TIDA`
+Your Working Group's own organization, for example `fg-tida-wg1` — **not** the central `FG-TIDA` organization (that one holds only the templates).
 
 **Repository name**
 
-Use the agreed Working Group naming convention, for example:
+Use the agreed Working Group naming convention — for the charter, for example:
 
 `wg1-charter`
-
-or:
-
-`wg-trust-framework-charter`
 
 Set the repository visibility according to FG-TIDA policy.
 
@@ -132,7 +134,7 @@ Deploy
 The published charter site will normally be available at:
 
 ```text
-https://fg-tida.github.io/<repository-name>/
+https://fg-tida-wg<n>.github.io/<repository-name>/
 ```
 
 The downloadable PDF is published as:
@@ -144,7 +146,7 @@ wg-charter.pdf
 For example:
 
 ```text
-https://fg-tida.github.io/wg1-charter/wg-charter.pdf
+https://fg-tida-wg1.github.io/wg1-charter/wg-charter.pdf
 ```
 
 ---
